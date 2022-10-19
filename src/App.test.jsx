@@ -10,8 +10,6 @@ describe('App', () => {
     // screen.debug();
     expect(screen.getByText(/Click on the Vite and React logos to learn more/i)).toBeInTheDocument();
 
-    console.log(matchers);
-
     // check if App components renders headline
   });
 });
