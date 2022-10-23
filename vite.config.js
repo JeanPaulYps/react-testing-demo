@@ -8,5 +8,13 @@ export default defineConfig({
     globals: true,
     environment: "happy-dom",
     setupFiles: "./setupTests.js",
+    provider: "c8",
+    coverage: {
+      reporter: ['text', 'html'],
+      exclude: [
+        'node_modules/',
+        'setupTests.js',
+      ],
+    },
   },
 });

@@ -16,7 +16,6 @@ function CustomInput({ inputName, label }) {
   const handleChange = ({ target }) => setData(target.value);
   return (
     <TextField
-      inputName={inputName}
       label={label}
       id={inputName}
       value={data}
@@ -50,38 +49,17 @@ function CustomSelect({ inputName, label, options }) {
   );
 }
 
-function CustomCheckbox({ label, options }) {
-  const createCheckbox = (options) => {
-    const intialState = {}
-    options.forEach(({value}) => intialState[value] = false);
-    return intialState;
-  }
-  const [checked, setChecked] = useState(createCheckbox(options));
-  const handleChange = (event) => {
-    setChecked((checkboxes) =>  ({
-      ...checkboxes,
-      [event.target.name]: event.target.checked,
-    }));
-  };
+function CustomCheckbox({ inputName, label }) {
+  const [checked, setChecked] = useState(false);
+  const handleChange = ({ target }) => setChecked(target.checked);
   return (
-    <FormControl component="fieldset" variant="standard">
-      <FormLabel component="legend">{label}</FormLabel>
-      <FormGroup>
-        {options.map(({ value, text }) => (
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={checked[value]}
-                onChange={handleChange}
-                name={value}
-                key={value}
-              />
-            }
-            label={text}
-          />
-        ))}
-      </FormGroup>
-    </FormControl>
+    <FormControlLabel
+      htmlFor={inputName}
+      label={label}
+      control={
+        <Checkbox checked={checked} onChange={handleChange} id={inputName} />
+      }
+    />
   );
 }
 
@@ -93,15 +71,21 @@ function Form() {
         inputName="age"
         label="Edad"
         options={[
-          { value: "", text: "empty" },
+          { value: "", text: "Empty" },
           { value: 10, text: "Ten" },
           { value: 20, text: "Twenty" },
           { value: 30, text: "Thirty" },
         ]}
       />
       <br />
-      <CustomCheckbox inputName="Checkbox" label="" options={[{text: "Aceptas terminos y condiciones", value:"TermsAndConditions"}]}/>
-      <CustomCheckbox inputName="Checkbox" label="" options={[{text: "Deseas suscribirte", value:"suscription"}]}/>
+      <CustomCheckbox
+        label="¿Deseas suscribirte?"
+        inputName={"enableSuscription"}
+      />
+      <CustomCheckbox
+        label="¿Aceptas terminos y condiciones?"
+        inputName={"termsAndCondtions"}
+      />
     </>
   );
 }
