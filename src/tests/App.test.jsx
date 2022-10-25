@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import matchers from '@testing-library/jest-dom/matchers';
+import { App } from '../pages';
 
-import App from './App';
 
 describe('App', () => {
   it('renders headline', () => {

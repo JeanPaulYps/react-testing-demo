@@ -1,5 +1,5 @@
 import { prettyDOM, render, screen } from "@testing-library/react";
-import Form from "./Form";
+import { Form } from "../pages";
 
 describe('Form tests', () => {
     it('Should render input', () => {
@@ -24,9 +24,9 @@ describe('Form tests', () => {
     it('Should render all inputs', () => {
         render(<Form />);
         const allTypeOfInputs = screen.getAllByLabelText(/.*/);
-        allTypeOfInputs.forEach(
-            element => console.log(prettyDOM(element))
-        )
+        // allTypeOfInputs.forEach(
+        //     element => console.log(prettyDOM(element))
+        // )
         
         expect(allTypeOfInputs).toHaveLength(4);
         
@@ -35,6 +35,10 @@ describe('Form tests', () => {
         render(<Form />);
         const checkbox = screen.getByLabelText(/.*aceptas terminos y condiciones.*/i);
         expect(checkbox).toBeInTheDocument();
-    } ) 
-    
+    }); 
+    it('Should get checkbox v2', () => {
+        render(<Form />);
+        const checkbox = screen.getByRole("checkbox", {name: /.*aceptas terminos y condiciones.*/i });
+        expect(checkbox).toBeInTheDocument();
+    });
 });

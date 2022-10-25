@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
-import Form from "./Form";
+import { Form } from "./pages";
+// import App from "./App";
 // import "./index.css";
 
 
