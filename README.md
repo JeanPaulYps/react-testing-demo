@@ -6,6 +6,10 @@ Para ejecutar el proyecto correr:
 $npm dev
 $yarn dev 
 ```
+# Cambiar la página
+
+Para cambiar la pagina que se visualiza al correr el proyecto modificar el archivo
+`main.jsx` y cambiar el componente `Form` por `App` o `AsyncForm`
 
 # Ejecución de pruebas
 

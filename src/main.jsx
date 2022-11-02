@@ -9,5 +9,5 @@ import { Form, App, AsyncForm } from "./pages";
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-    <App />
+    <Form />
 );
